@@ -22,13 +22,43 @@ repositories {
 }
 
 dependencies {
+    // json
+    implementation 'org.json:json:20230227'
+
+    // JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // SECURITY
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+
+    // THYMELEAF
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    // WEB
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // LOMBOK
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
+
+    // MYSQL
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // VALIDATION
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // JWT
+    compileOnly group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
+    runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
+
+    // DEVTOOL
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // TEST
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('bootBuildImage') {
