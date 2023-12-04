@@ -1,6 +1,6 @@
 package com.sparta.soloproject2.comment;
 
-import com.sparta.soloproject2.CommonResponseDto;
+import com.sparta.soloproject2.user.CommonResponseDto;
 import com.sparta.soloproject2.user.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

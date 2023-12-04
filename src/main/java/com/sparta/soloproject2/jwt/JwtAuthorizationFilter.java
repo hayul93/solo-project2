@@ -8,14 +8,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.soloproject2.CommonResponseDto;
+import com.sparta.soloproject2.user.CommonResponseDto;
 import com.sparta.soloproject2.user.UserDetailsImpl;
 import com.sparta.soloproject2.user.UserDetailsService;
-import com.sparta.soloproject2.user.UserService;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

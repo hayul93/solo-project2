@@ -1,4 +1,4 @@
-package com.sparta.soloproject2;
+package com.sparta.soloproject2.user;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
