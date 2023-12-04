@@ -1,5 +1,6 @@
 package com.sparta.soloproject2.user;
 
+import com.sparta.soloproject2.CommonResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,27 +20,27 @@ public class UserController {
     private final JwtUtil jwtUtil;
 
     @PostMapping("/signup")
-    public ResponseEntity<CommonResponseDto> signup(@Valid @RequestBody UserRequestDto userRequestDto) {
+    public ResponseEntity<CommonResponseDTO> signup(@Valid @RequestBody UserRequestDTO userRequestDto) {
         try {
             userService.signup(userRequestDto);
         } catch (IllegalArgumentException exception) {
-            return ResponseEntity.badRequest().body(new CommonResponseDto("중복된 username 입니다.", HttpStatus.BAD_REQUEST.value()));
+            return ResponseEntity.badRequest().body(new CommonResponseDTO("중복된 username 입니다.", HttpStatus.BAD_REQUEST.value()));
         }
 
         return ResponseEntity.status(HttpStatus.CREATED.value())
-                .body(new CommonResponseDto("회원가입 성공", HttpStatus.CREATED.value()));
+                .body(new CommonResponseDTO("회원가입 성공", HttpStatus.CREATED.value()));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<CommonResponseDto> login(@RequestBody UserRequestDto userRequestDto, HttpServletResponse response) {
+    public ResponseEntity<CommonResponseDTO> login(@RequestBody UserRequestDTO userRequestDto, HttpServletResponse response) {
         try {
             userService.login(userRequestDto);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(new CommonResponseDto(e.getMessage(), HttpStatus.BAD_REQUEST.value()));
+            return ResponseEntity.badRequest().body(new CommonResponseDTO(e.getMessage(), HttpStatus.BAD_REQUEST.value()));
         }
 
         response.setHeader(JwtUtil.AUTHORIZATION_HEADER, jwtUtil.createToken(userRequestDto.getUsername()));
 
-        return ResponseEntity.ok().body(new CommonResponseDto("로그인 성공", HttpStatus.OK.value()));
+        return ResponseEntity.ok().body(new CommonResponseDTO("로그인 성공", HttpStatus.OK.value()));
     }
 }

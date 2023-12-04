@@ -3,16 +3,20 @@ package com.sparta.soloproject2.todo;
 import com.sparta.soloproject2.comment.Comment;
 import com.sparta.soloproject2.user.User;
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Entity
 @NoArgsConstructor
-public class Todo {
+@EqualsAndHashCode
+public class Todo implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -35,6 +39,12 @@ public class Todo {
 
 	@OneToMany(mappedBy = "todo")
 	private List<Comment> comments;
+
+	@Builder
+	public Todo(String title, String content) {
+		this.title = title;
+		this.content = content;
+	}
 
 	public Todo(TodoRequestDTO dto) {
 		this.title = dto.getTitle();

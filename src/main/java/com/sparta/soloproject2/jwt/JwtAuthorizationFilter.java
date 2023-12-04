@@ -11,7 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.soloproject2.user.CommonResponseDto;
+import com.sparta.soloproject2.CommonResponseDTO;
 import com.sparta.soloproject2.user.UserDetailsImpl;
 import com.sparta.soloproject2.user.UserDetailsService;
 import io.jsonwebtoken.Claims;
@@ -53,7 +53,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
                 // -> 이제 @AuthenticationPrincipal 로 조회할 수 있음
             } else {
                 // 인증정보가 존재하지 않을때
-                CommonResponseDto commonResponseDto = new CommonResponseDto("토큰이 유효하지 않습니다.", HttpStatus.BAD_REQUEST.value());
+                CommonResponseDTO commonResponseDto = new CommonResponseDTO("토큰이 유효하지 않습니다.", HttpStatus.BAD_REQUEST.value());
                 // 응답값에 statys를 세팅해줘야해서 사용
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 //Body가 깨지면 안되기 떄문에 사용

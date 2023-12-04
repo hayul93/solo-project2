@@ -22,9 +22,9 @@ public class TodoService {
 		Todo todo = new Todo(dto);
 		todo.setUser(user);
 
-		todoRepository.save(todo);
+		var saved = todoRepository.save(todo);
 
-		return new TodoResponseDTO(todo);
+		return new TodoResponseDTO(saved);
 	}
 
 	public TodoResponseDTO getTodoDto(Long todoId) {
@@ -63,7 +63,7 @@ public class TodoService {
 	}
 
 	@Transactional
-	public TodoResponseDTO competeTodo(Long todoId, User user) {
+	public TodoResponseDTO completeTodo(Long todoId, User user) {
 		Todo todo = getUserTodo(todoId, user);
 
 		todo.complete(); // 완료 처리
@@ -74,7 +74,7 @@ public class TodoService {
 	public Todo getTodo(Long todoId) {
 
 		return todoRepository.findById(todoId)
-			.orElseThrow(() -> new IllegalArgumentException("존재하지 않는 할일 ID 입니다."));
+				.orElseThrow(() -> new IllegalArgumentException("존재하지 않는 할일 ID 입니다."));
 	}
 
 	public Todo getUserTodo(Long todoId, User user) {
@@ -85,4 +85,5 @@ public class TodoService {
 		}
 		return todo;
 	}
+
 }

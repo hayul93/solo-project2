@@ -1,15 +1,17 @@
 package com.sparta.soloproject2.todo;
 
-import com.sparta.soloproject2.user.CommonResponseDto;
+import com.sparta.soloproject2.CommonResponseDTO;
 import com.sparta.soloproject2.user.UserDTO;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Setter
 @Getter
-public class TodoResponseDTO extends CommonResponseDto {
+@Builder
+@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
+public class TodoResponseDTO extends CommonResponseDTO {
 	private Long id;
 	private String title;
 	private String content;

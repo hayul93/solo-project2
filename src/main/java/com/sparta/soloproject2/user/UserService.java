@@ -10,7 +10,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
 
-    public void signup(UserRequestDto userRequestDto) {
+    public void signup(UserRequestDTO userRequestDto) {
         String username = userRequestDto.getUsername();
         String password = passwordEncoder.encode(userRequestDto.getPassword());
 
@@ -22,7 +22,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void login(UserRequestDto userRequestDto) {
+    public void login(UserRequestDTO userRequestDto) {
         String username = userRequestDto.getUsername();
         String password = userRequestDto.getPassword();
 
